@@ -5,11 +5,11 @@ Template repository for shipping an npm-publishable dropkit package backed by `c
 ## What this template includes
 
 - A publish-ready package (`package.json`, version, exports, files)
-- A plugin factory in `lib/plugin.ts`
+- A plugin factory in `plugin.ts`
 - Skeletons for all supported dropkit content types:
-  - `plugin/agent/*.md`
-  - `plugin/command/*.md`
-  - `plugin/skills/*/SKILL.md`
+  - `files/agent/*.md`
+  - `files/command/*.md`
+  - `files/skills/*/SKILL.md`
 - Bun script workflow for check/test/build/version/publish-dry-run
 
 ## File tree
@@ -17,10 +17,8 @@ Template repository for shipping an npm-publishable dropkit package backed by `c
 ```text
 .
 ├── index.ts
-├── lib/
-│   ├── index.ts
-│   └── plugin.ts
-├── plugin/
+├── plugin.ts
+├── files/
 │   ├── agent/
 │   │   └── example-agent.md
 │   ├── command/

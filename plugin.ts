@@ -12,8 +12,8 @@ export type CreateTemplateDropkitPluginOptions = {
 
 /// Create a ready-to-customize dropkit plugin using this package defaults.
 export function createTemplateDropkitPlugin(options: CreateTemplateDropkitPluginOptions = {}) {
-  const packageRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-  const pluginRootDir = join(packageRoot, "plugin");
+  const packageRoot = dirname(fileURLToPath(import.meta.url));
+  const pluginRootDir = join(packageRoot, "files");
 
   return createDropkitPlugin({
     service: options.service ?? "dropkit-template",

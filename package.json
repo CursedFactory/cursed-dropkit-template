@@ -10,13 +10,12 @@
   "types": "./index.ts",
   "exports": {
     ".": "./index.ts",
-    "./lib": "./lib/index.ts",
-    "./lib/*": "./lib/*"
+    "./plugin": "./plugin.ts"
   },
   "files": [
     "index.ts",
-    "lib",
-    "plugin",
+    "plugin.ts",
+    "files",
     "scripts",
     "README.md",
     "LICENSE"

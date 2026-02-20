@@ -10,8 +10,8 @@ if (packageJson.exports?.["."] !== "./index.ts") {
   throw new Error(`Unexpected package.json exports['.']: ${String(packageJson.exports?.["."])}`);
 }
 
-if (!Array.isArray(packageJson.files) || !packageJson.files.includes("plugin")) {
-  throw new Error("package.json files must include 'plugin'");
+if (!Array.isArray(packageJson.files) || !packageJson.files.includes("files")) {
+  throw new Error("package.json files must include 'files'");
 }
 
 console.log("Manifest check passed");
