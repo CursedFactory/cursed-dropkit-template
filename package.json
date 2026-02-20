@@ -1,0 +1,49 @@
+{
+  "name": "@cursed-factory/dropkit-template",
+  "version": "0.1.0",
+  "description": "Template dropkit package with agent/command/skill skeletons for OpenCode.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./index.ts",
+  "module": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./lib": "./lib/index.ts",
+    "./lib/*": "./lib/*"
+  },
+  "files": [
+    "index.ts",
+    "lib",
+    "plugin",
+    "scripts",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "bun scripts/build.sh.ts",
+    "check": "bun scripts/check.sh.ts",
+    "test": "bun scripts/test.sh.ts",
+    "ci": "bun scripts/ci.sh.ts",
+    "version:set": "bun scripts/version.sh.ts",
+    "publish:npm:dry-run": "bun scripts/npm_publish_dry_run.sh.ts"
+  },
+  "keywords": [
+    "opencode",
+    "dropkit",
+    "agent",
+    "command",
+    "skill",
+    "template"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": "*"
+  },
+  "dependencies": {
+    "cursed-dropkit": "github:CursedFactory/cursed-dropkit"
+  }
+}
