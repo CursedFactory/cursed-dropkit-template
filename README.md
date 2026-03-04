@@ -72,6 +72,81 @@ export const MyDropkit = createTemplateDropkitPlugin({
 
 Then register that plugin in your `opencode.json` plugin list.
 
+## Agent prompt: install this dropkit in OpenCode
+
+Copy/paste this prompt to an agent:
+
+```md
+Install this dropkit plugin into my OpenCode setup.
+
+First ask me where to install it:
+1) System level (`~/.config/opencode`)
+2) Project level (`.opencode` in current repo)
+3) Custom config dir path
+
+After I choose, do all setup steps end-to-end:
+- Add dependency in `<CONFIG_DIR>/package.json`:
+  - `"@cursed-factory/dropkit-template": "<VERSION_OR_SOURCE>"`
+- Add plugin wrapper file at `<CONFIG_DIR>/plugins/my_dropkit.ts`:
+  - import `createTemplateDropkitPlugin` from `@cursed-factory/dropkit-template`
+  - export plugin created with service/namespace values I confirm
+- Run `bun install --cwd <CONFIG_DIR>`
+- Verify by importing the wrapper with `bun --cwd <CONFIG_DIR> -e "import('./plugins/my_dropkit.ts')..."`
+- Confirm which agents/skills/commands are now available and how to invoke them.
+
+If I choose custom path, use that path exactly.
+If package source is not published npm, ask whether to use `file:`, `git+https`, or `github:` source string.
+```
+
+Relevant OpenCode docs:
+
+- https://opencode.ai/docs/
+- https://opencode.ai/docs/config/
+- https://opencode.ai/docs/plugins/
+- https://opencode.ai/docs/agents/
+
+Reference snippets (embedded so agents do not need web fetch):
+
+```jsonc
+// Config locations and precedence (later overrides earlier):
+// 1) Inline env config
+// 2) .opencode directories
+// 3) Project opencode.json
+// 4) OPENCODE_CONFIG custom file
+// 5) ~/.config/opencode/opencode.json
+// 6) Remote org config
+//
+// Global config path:
+// ~/.config/opencode/opencode.json
+```
+
+```text
+Plugin directories auto-loaded at startup:
+- ~/.config/opencode/plugins/   (global)
+- .opencode/plugins/            (project)
+```
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["@my-org/custom-plugin"]
+}
+```
+
+```markdown
+---
+description: Reviews code for quality and best practices
+mode: subagent
+model: anthropic/claude-sonnet-4-20250514
+---
+```
+
+```text
+Agent markdown files:
+- ~/.config/opencode/agents/  (global)
+- .opencode/agents/           (project)
+```
+
 ## Publish checklist
 
 1. Update package name and metadata in `package.json`
