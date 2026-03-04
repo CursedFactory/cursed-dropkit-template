@@ -96,6 +96,30 @@ After I choose, do all setup steps end-to-end:
 
 If I choose custom path, use that path exactly.
 If package source is not published npm, ask whether to use `file:`, `git+https`, or `github:` source string.
+
+Embedded OpenCode reference snippets (use directly, no web fetch needed):
+
+Config precedence (later overrides earlier):
+1) Inline env config
+2) .opencode directories
+3) Project opencode.json
+4) OPENCODE_CONFIG custom file
+5) ~/.config/opencode/opencode.json
+6) Remote org config
+
+Plugin directories auto-loaded at startup:
+- ~/.config/opencode/plugins/   (global)
+- .opencode/plugins/            (project)
+
+Example plugin config snippet:
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["@my-org/custom-plugin"]
+}
+
+Agent markdown locations:
+- ~/.config/opencode/agents/  (global)
+- .opencode/agents/           (project)
 ```
 </details>
 
@@ -105,48 +129,6 @@ Relevant OpenCode docs:
 - https://opencode.ai/docs/config/
 - https://opencode.ai/docs/plugins/
 - https://opencode.ai/docs/agents/
-
-Reference snippets (embedded so agents do not need web fetch):
-
-```jsonc
-// Config locations and precedence (later overrides earlier):
-// 1) Inline env config
-// 2) .opencode directories
-// 3) Project opencode.json
-// 4) OPENCODE_CONFIG custom file
-// 5) ~/.config/opencode/opencode.json
-// 6) Remote org config
-//
-// Global config path:
-// ~/.config/opencode/opencode.json
-```
-
-```text
-Plugin directories auto-loaded at startup:
-- ~/.config/opencode/plugins/   (global)
-- .opencode/plugins/            (project)
-```
-
-```json
-{
-  "$schema": "https://opencode.ai/config.json",
-  "plugin": ["@my-org/custom-plugin"]
-}
-```
-
-```markdown
----
-description: Reviews code for quality and best practices
-mode: subagent
-model: anthropic/claude-sonnet-4-20250514
----
-```
-
-```text
-Agent markdown files:
-- ~/.config/opencode/agents/  (global)
-- .opencode/agents/           (project)
-```
 
 ## Publish checklist
 
