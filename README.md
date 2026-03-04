@@ -73,8 +73,8 @@ export const MyDropkit = createTemplateDropkitPlugin({
 Then register that plugin in your `opencode.json` plugin list.
 
 ## Agent prompt: install this dropkit in OpenCode
-
-Copy/paste this prompt to an agent:
+<details>
+<summary>Copy/paste install prompt</summary>
 
 ```md
 Install this dropkit plugin into my OpenCode setup.
@@ -97,6 +97,7 @@ After I choose, do all setup steps end-to-end:
 If I choose custom path, use that path exactly.
 If package source is not published npm, ask whether to use `file:`, `git+https`, or `github:` source string.
 ```
+</details>
 
 Relevant OpenCode docs:
 
